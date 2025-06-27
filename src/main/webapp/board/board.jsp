@@ -17,12 +17,28 @@
 			<a id='list'>게시판</a> <a id='insert'>등록</a>
 		</nav>
 		<div class='outer'>
-		
+			${list }
 		</div>
 	</div>
 	<script>
-		
+		$(function(){
+			$("#list").click(function(){
+				$.ajax({
+					url : `<%=request.getContextPath() %>/board/list`
+					method:"get",.
+					dataType : "html",
+					success : function(data){
+						//console.log(data)
+						$(".outer").html(data)
+					},
+					error : function(error){
+						console.log(error);
+					}
+				})
+			})
+		})
 	</script>
 
+<!-- 2번 png까지가 board.jsp에 작성  -->
 </body>
 </html>
